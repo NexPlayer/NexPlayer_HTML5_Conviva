@@ -9,7 +9,7 @@ This repository contains the sample demo code of NexPlayer™ HTML5 with the int
 
 ## Quick Start
 
-- The folder "assets-scripts/conviva" includes the scripts that should be included in the HTML file:
+- The folder "assets-sample/conviva" includes the scripts that should be included in the HTML file:
 
 ```html
 <script src="./assets-samples/conviva/conviva-html5native-impl.js"></script>
