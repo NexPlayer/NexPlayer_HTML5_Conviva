@@ -44,7 +44,7 @@ NexConviva.cleanSession();
 -------------------
 
 ## Request demo
-Product page [NexPlayer™ HTML5](https://nexplayersdk.com/nexplayer-html5/)
+Product page [NexPlayer™ HTML5](https://nexplayersdk.com/html5-player/)
 
 ## Contact
 [supportmadrid@nexstreaming.com](mailto:supportmadrid@nexstreaming.com)
