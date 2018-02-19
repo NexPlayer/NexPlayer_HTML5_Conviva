@@ -43,11 +43,11 @@ NexConviva.cleanSession();
 
 -------------------
 
-## Resources
+## Request demo
 Product page [NexPlayer™ HTML5](https://nexplayersdk.com/nexplayer-html5/)
 
 ## Contact
-Form to request [NexPlayer™ HTML5](https://nexplayersdk.com/request) demo
+[supportmadrid@nexstreaming.com](mailto:supportmadrid@nexstreaming.com)
 
 ## License
 [NexPlayer™ HTML5 Product License](License.txt)
