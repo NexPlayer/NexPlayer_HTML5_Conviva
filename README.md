@@ -1,7 +1,6 @@
-## NexPlayer™ HTML5 Conviva Analytics Integration
-
 ![NexPlayer demo home ](images/Conviva1.png)
 
+# NexPlayer™ HTML5 Conviva Analytics Integration
 
 [NexPlayer™ HTML5](https://nexplayersdk.com/nexplayer-html5/) is a multi-screen streaming player that enables HLS and DASH live streaming across all browsers and platforms with the highest video quality. NexPlayer™ HTML5 supports an advanced feature set that includes DRM, Closed Captioning, Time Shifting and 360 video playback among many others.
 
