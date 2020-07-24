@@ -1,0 +1,102 @@
+<!-- (C) 2016 Conviva, Inc. All rights reserved. Confidential and proprietary. -->
+<!-- Kedar Marsada <kmarsada@conviva.com> -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+      <script type="text/javascript" src="conviva/conviva-core-sdk.min.js"></script>
+      <script type="text/javascript" src="conviva/conviva-html5native-impl.js"></script>
+    </head>
+
+    <style>
+      #playerContainer{
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        width: 75%;
+        height: 75%;
+      }
+      #player{
+        position: inherit;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <body>
+
+      <div id="playerContainer">
+
+        <div id="player"></div>
+
+        <script type="text/javascript" src="app/configs.js"></script>
+        <script type="text/javascript" src="app/NexHandshake.js"></script>
+
+        <script type="text/javascript" src='https://nexplayer.nexplayersdk.com/latest/nexplayer.js'> document.addEventListener("player", function (e) {
+            e.preventDefault();
+        }, false);</script>
+
+        <script>
+
+
+        var player = null;
+        var videoElem = null;
+        var NexConviva = null;
+
+        var self = this;
+
+        var url = 'https://d7wce5shv28x4.cloudfront.net/sample_streams/sintel_subtitles_hls/master.m3u8';
+        url = 'https://media.axprod.net/Temp/Taavi/sintel/Clear/Manifest.mpd'; // VOD
+        //url= 'https://livesim.dashif.org/livesim/testpic_2s/Manifest.mpd'; // Live
+
+        // Init Conviva, create session...
+        var loadModules = function() {
+            NexConviva = new NexHandshake(videoElem, url, player.isLive(), true);
+            NexConviva.initConvivaClient();
+            NexConviva.createContentSession();
+            // Get initial bitrate
+            NexConviva.updateBitrateData(player.getCurrentTrack().bitrate / 1000);
+            // Use this in order to update the bitrate data everytime a track changes
+            player.on(nexplayer.Player.NexEvent.Track_Change, function() {
+              NexConviva.updateBitrateData(player.getCurrentTrack().bitrate / 1000);
+            });
+            // Example of creating a custom tag
+            NexConviva.createCustomTag("a", "20", false);
+            // It is neccessary to call this method to update the metadata on Conviva side
+            NexConviva.updateContentMetadata();
+        }
+
+
+        var callBackWithPlayers = function (nexplayerInstance, videoElement) {
+          player = nexplayerInstance;
+          videoElem = videoElement;
+
+          videoElem.addEventListener("loadeddata", function() {
+            loadModules();
+          });
+        }
+
+        nexplayer.Setup({
+          key: 'YOUR NEXPLAYER KEY',
+          div: document.getElementById('player'),
+          callbacksForPlayer: callBackWithPlayers,
+          src: url,
+          autoplay: true, // Optional
+          mutedAtStart: true, // Optional
+          disableKeyEvents: true,
+          debug: true,// Optional
+          useDynamicThumbnails: false,
+          staticThumbnailsImage: 'https://d7wce5shv28x4.cloudfront.net/HTML5/thumb/sample/thumbnails.png',
+          staticThumbnailsVTT: 'https://d7wce5shv28x4.cloudfront.net/HTML5/thumb/sample/video.vtt',
+          useDefaultControls: true,
+          vast: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=64565431654546',
+        });
+
+
+  </script>
+
+
+</div>
+
+
+	</body>
+</html>

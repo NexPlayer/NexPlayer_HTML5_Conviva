@@ -7,16 +7,16 @@ This repository contains the sample demo code of NexPlayer™ HTML5 with the int
 
 ## Quick Start
 
-- The folder "assets-sample/conviva" includes the scripts that should be included in the HTML file:
+- The folders "app" and "conviva" include the scripts that should be included in the HTML file:
 
 ```html
-<script src="./assets-samples/conviva/conviva-html5native-impl.js"></script>
-<script src="./assets-samples/conviva/conviva-html5native-library.min.js"></script>
-<script src="./assets-samples/conviva/NexHandshake.js"></script>
-<script src="./assets-samples/conviva/configs.js"></script>
+<script type="text/javascript" src="conviva/conviva-core-sdk.min.js"></script>
+<script type="text/javascript" src="conviva/conviva-html5native-impl.js"></script>
+<script type="text/javascript" src="app/configs.js"></script>
+<script type="text/javascript" src="app/NexHandshake.js"></script>
 ```
 
-- Configure your settings in "assets-scripts/conviva/configs.js".
+- Configure your settings in "app/configs.js".
 
 - NexHandshake should be created after the event "loadeddata" is fired. This object preintegrates the Conviva client and will handle the analytic sessions.
 
@@ -28,15 +28,28 @@ videoElement.addEventListener('loadeddata', loadModules, false);
 ...
 
 function loadModules() {
-    NexConviva = new NexHandshake(videoElement, url, player.isLive());
+  NexConviva = new NexHandshake(videoElem, url, player.isLive(), true);
+  NexConviva.initConvivaClient();
+  NexConviva.createContentSession();
+  NexConviva.updateBitrateData(player.getCurrentTrack().bitrate / 1000);
+  // Use this in order to update the bitrate data every time a track changes
+  player.on(nexplayer.Player.NexEvent.Track_Change, function() {
+    NexConviva.updateBitrateData(player.getCurrentTrack().bitrate / 1000);
+  });
+  // Example of creating a custom tag
+  NexConviva.createCustomTag("a", "20", false);
+  // It is necessary to call this method to update the metadata on Conviva side
+  NexConviva.updateContentMetadata();
 }
 ```
 
 - To destroy and reset the current Conviva session the following code should be used:
 
 ```javascript
-NexConviva.cleanSession();
+NexConviva.cleanupContentSession();
 ```
+This is already called in NexHandshake.js file, but it can be modified and be called whenever
+it is wanted to clean up the session.
 
 
 -------------------
@@ -45,7 +58,7 @@ NexConviva.cleanSession();
 Product page [NexPlayer™ HTML5](https://nexplayersdk.com/html5-player/)
 
 ## Contact
-[supportmadrid@nexstreaming.com](mailto:supportmadrid@nexstreaming.com)
+[supportmadrid@nexstreaming.com](mailto:supportmadrid@nexplayer.com)
 
 ## License
 [NexPlayer™ HTML5 Product License](License.txt)
