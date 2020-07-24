@@ -58,7 +58,7 @@ it is wanted to clean up the session.
 Product page [NexPlayer™ HTML5](https://nexplayersdk.com/html5-player/)
 
 ## Contact
-[supportmadrid@nexstreaming.com](mailto:supportmadrid@nexplayer.com)
+[supportmadrid@nexplayer.com](mailto:supportmadrid@nexplayer.com)
 
 ## License
 [NexPlayer™ HTML5 Product License](License.txt)
