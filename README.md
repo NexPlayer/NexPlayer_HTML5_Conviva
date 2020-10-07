@@ -3,7 +3,7 @@
 
 [NexPlayer™ HTML5](https://nexplayersdk.com/nexplayer-html5/) is a multi-screen streaming player that enables HLS and DASH live streaming across all browsers and platforms with the highest video quality. NexPlayer™ HTML5 supports an advanced feature set that includes DRM, Closed Captioning, Time Shifting and 360 video playback among many others.
 
-This repository contains the sample demo code of NexPlayer™ HTML5 with the integration of [Conviva](https://www.conviva.com/). A fully working demo can be downloaded on our [website](https://nexplayersdk.com/request/).
+This repository contains the sample demo code of NexPlayer™ HTML5 with the integration of [Conviva](https://www.conviva.com/). 
 
 ## Quick Start
 
